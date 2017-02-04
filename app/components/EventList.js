@@ -7,7 +7,7 @@ class EventList extends Component {
   constructor(props){
     super(props)
     this.state = {
-      events: ["http://www.eventbrite.com/e/coding-tickets-31696280428"]
+      events: []
     }
   }
 
@@ -20,6 +20,7 @@ class EventList extends Component {
       context.setState({
         events: result.data
       })
+      document.getElementById('eventList').scrollIntoView({behavior: "smooth"})
     })
     .catch(err=>{
       console.log('error fetching events', err)
@@ -30,7 +31,7 @@ class EventList extends Component {
     console.log('in render of eventlist and events are', this.state.events)
     var events = this.state.events
     return (    
-      <div className = "eventList"> 
+      <div className = "eventList" id="eventList"> 
         {events.map((event, i) => (
           <EventEntry 
           event = {event}

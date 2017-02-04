@@ -21,8 +21,13 @@ class EventEntry extends Component {
         
   render(){
     let event = this.props.event
+    let id = 'event'
+    if(event) {
+      id = event.title.replace(/\s/g, '')
+      console.log('id is', id)
+    }
     return (     
-      <div className="event">
+      <div className="event" id={id}>
         <Grid>
           <Row>
             <Col xs={5} md={5}>

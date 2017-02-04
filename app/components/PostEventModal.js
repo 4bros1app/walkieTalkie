@@ -27,6 +27,13 @@ class PostEventModal extends Component {
     .then(result => {
       console.log('result is', result)
       url.value = ''
+      let id = result.data.title.replace(/\s/g, '')
+      console.log('id we looking for is', id)
+      this.props.toggleModal()
+      this.props.setEventListToTrue()
+      setTimeout(function(){
+        document.getElementById(id).scrollIntoView({behavior: "smooth"})
+      }, 500)
     })
     .catch(error => {
       console.log('error in posting event to database', error)

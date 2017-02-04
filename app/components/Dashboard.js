@@ -38,7 +38,7 @@ class Dashboard extends Component {
     this.toggleEventList = this.toggleEventList.bind(this)
     this.togglePostJobModal = this.togglePostJobModal.bind(this)
     this.togglePostResourceModal = this.togglePostResourceModal.bind(this)
-
+    this.setEventListToTrue = this.setEventListToTrue.bind(this)
   }
 
   togglePostEventModal() {
@@ -51,7 +51,17 @@ class Dashboard extends Component {
     this.setState({
       showEventlist: !this.state.showEventlist
     })
+    // setTimeout(()=>{
+    //   document.getElementById('eventList').scrollIntoView()
+    // }, 500)
   }
+
+  setEventListToTrue() {
+    this.setState({
+      showEventlist: true
+    })
+  }
+
   togglePostJobModal() {
     this.setState({
       showPostJobModal: !this.state.showPostJobModal
@@ -125,7 +135,8 @@ class Dashboard extends Component {
           </div>
         </Jumbotron>
         {this.state.showPostEventModal ?
-        <PostEventModal show={this.state.showPostEventModal} toggleModal={this.togglePostEventModal}/>
+        <PostEventModal show={this.state.showPostEventModal} toggleModal={this.togglePostEventModal} 
+        toggleEventList={this.toggleEventList} setEventListToTrue={this.setEventListToTrue}/>
         : this.state.showEventlist ?
         <EventList />
         : this.state.showPostJobModal ?
