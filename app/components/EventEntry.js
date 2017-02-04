@@ -21,14 +21,19 @@ class EventEntry extends Component {
         
   render(){
     let event = this.props.event
+    let id = 'event'
+    if(event) {
+      id = event.title.replace(/\s/g, '')
+      console.log('id is', id)
+    }
     return (     
-      <div className="event">
+      <div className="event" id={id}>
         <Grid>
           <Row>
             <Col xs={5} md={5}>
               <h2>{event.title}</h2>
               <p>{event.organizer} at {event.location}</p>
-              <Button onClick={this.toggleModal}>show event</Button>
+              <Button bsStyle="primary" onClick={this.toggleModal}>show event</Button>
               <a href={event.url} target="_blank" style={{padding: 20+'px'}}>See on eventbrite</a>
             </Col>
             <Col xs={7} md={7}>
